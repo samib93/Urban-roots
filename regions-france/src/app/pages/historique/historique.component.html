@@ -1,0 +1,26 @@
+
+
+
+<app-header [activePage]="activePage"></app-header>
+
+<p>historique works!</p>
+
+
+
+
+
+
+
+<div class="session-list">
+  <div *ngFor="let session of sessions" class="session-item">
+    <div class="session-info">
+      <div class="session-date">{{ session.date }}</div>
+      <div class="session-time">{{ session.time }}</div>
+      <div class="session-location">{{ session.name }}</div>
+      <div class="session-temperature">{{ session.temperature }} °C</div>
+      <div class="session-weather">{{ session.weather }}</div>
+    </div>
+   
+  </div>
+</div>
+

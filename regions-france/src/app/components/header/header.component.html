@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark  fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">SkyFind</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+
+
+        <li class="nav-item">
+          <a routerLink="/home" class="nav-link {{activePage === 'home' ? 'active':''}}" aria-current="page" href="#">Accueil</a>
+        </li>
+
+
+        <li class="nav-item">
+          <a routerLink="/regions" class="nav-link {{activePage === 'regions' ? 'active':''}}" href="#">Régions</a>
+        </li>
+
+        <li class="nav-item">
+          <a routerLink="/historique" class="nav-link {{activePage === 'historique' ? 'active':''}}" href="#">Historique</a>
+        </li>
+
+        <!--
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown link
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        -->
+      </ul>
+      
+    </div>
+    <div class="dashboard">
+      <div *ngIf="profile; else notLoggedIn"></div>
+        <img [src]="profile.picture" alt="Photo de profil" class="Photo_profile">
+        <button (click)="logOut()">Log Out</button>
+    <ng-template #notLoggedIn>
+      <p>User not logged in.</p>
+      <button (click)="logOut()">Retour</button>
+    </ng-template>
+  </div>
+</div>
+  
+</nav>
+
+
+  
+
+
