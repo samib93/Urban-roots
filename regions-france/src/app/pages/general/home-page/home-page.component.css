@@ -3,8 +3,6 @@ section {
 }
 
 
-
-
 header {
     position: relative;
     background-color: black;
@@ -36,7 +34,7 @@ header {
     }
   
     .display-3{
-      font-size: 30vh;
+      font-size: 20vh;
   }
   
   
@@ -54,15 +52,13 @@ header {
       left: 0;
       height: 100%;
       width: 100%;
-      background-image: url(../../../../assets/images/map-loc.jpeg);
-      background-color: black;
+      background-image: url(../../../../assets/images/jardin.jpg);
+      background-repeat: no-repeat; /* Empêche la répétition de l'image */
+      background-size: cover; /* Couvre toute la zone sans répéter l'image */
       opacity: 0.5;
       z-index: 1;
     }
-  
-    @media (pointer: coarse) and (hover: none) {
-        background: url('https://source.unsplash.com/XT5OInaElMw/1600x900') black no-repeat center center scroll;
-    }
+ 
   
   
     .wrapper {

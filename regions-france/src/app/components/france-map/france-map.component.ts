@@ -1,30 +1,24 @@
-import { Component,  AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { Observable, Subscriber } from 'rxjs';
 import * as L from 'leaflet';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
-
-
-
-
 @Component({
   selector: 'app-france-map',
   standalone: true,
-  imports:[CommonModule],
+  imports: [CommonModule],
   templateUrl: './france-map.component.html',
   styleUrls: ['./france-map.component.scss']
 })
-
 export class FranceMapComponent implements AfterViewInit {
   map: any;
   weatherData: any;
-  airQualityData: any;  // Ajout d'une nouvelle variable pour stocker les données de qualité de l'air
+  airQualityData: any;
   cityName = '';
   airQuality: string = '';
 
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   public ngAfterViewInit(): void {
     this.loadMap();
@@ -77,9 +71,8 @@ export class FranceMapComponent implements AfterViewInit {
       <h3>${this.weatherData.name}</h3>
       <p>${this.weatherData.weather[0].description}</p>
       <p>Temperature: ${this.weatherData.main.temp} °C</p>
-      <p>Air Quality: ${this.airQualityData.list[0].main.aqi}</p>  // Affichage de l'indice de qualité de l'air
+      <p>Air Quality: ${this.airQualityData.list[0].main.aqi}</p>
     `;
-
 
     const icon = L.icon({
       iconUrl: 'assets/images/marker-icon.png',
@@ -87,23 +80,41 @@ export class FranceMapComponent implements AfterViewInit {
       popupAnchor: [13, 0],
     });
 
-    const marker = L.marker([latitude, longitude], { icon })
+    L.marker([latitude, longitude], { icon })
       .bindPopup(popupContent)
       .addTo(this.map);
   }
+
+  private addRandomMarkers(latitude: number, longitude: number): void {
+    for (let i = 0; i < 3; i++) {
+      const randomLat = latitude + (Math.random() - 0.7) * 0.2;  // Augmenter la variation pour plus d'espacement
+      const randomLng = longitude + (Math.random() - 0.7) * 0.2;
+
+      const customIcon = L.icon({
+        iconUrl: 'assets/images/custom-marker.png', // Chemin vers votre image personnalisée
+        shadowUrl: 'assets/images/marqueur-demplacement.png',
+        iconSize: [30, 50], // Ajustez la taille en fonction de votre image
+        iconAnchor: [15, 50], // Ancre au milieu en bas de l'icône
+        shadowSize: [50, 50]
+      });
+
+      L.marker([randomLat, randomLng], { icon: customIcon, title: '',alt:'jardin' }) // title: '' pour éviter le texte par défaut
+        .addTo(this.map); // Pas de bindPopup pour éviter le texte
+    }
+} 
 
   private loadMap(): void {
     this.map = L.map('map').setView([0, 0], 1);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      
       maxZoom: 19,
     }).addTo(this.map);
 
     this.getCurrentPosition().subscribe((position: any) => {
-      this.map.flyTo([position.latitude, position.longitude], 13);
-      this.loadWeatherData(position.latitude, position.longitude);
+      const { latitude, longitude } = position;
+      this.map.flyTo([latitude, longitude], 11);
+      this.loadWeatherData(latitude, longitude);
+      this.addRandomMarkers(latitude, longitude); // Ajouter les marqueurs aléatoires
     });
   }
 }
-

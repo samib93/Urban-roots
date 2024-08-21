@@ -17,16 +17,16 @@ body{
 .dashboard-map {
   position: relative;
   top: 0vh;
-  height: 70vh; /* Ajuste la hauteur de la carte selon tes besoins */
-  width: 70vh;
+  height: 80vh; /* Ajuste la hauteur de la carte selon tes besoins */
+  width: 150vh;
   border: 2px solid #007bff; /* Couleur du contour de la carte */
   border-radius: 10px; /* Rayon des coins de la carte */
-  filter: grayscale(100%)brightness(100%); /* Applique un filtre noir et blanc à 100% de niveaux de gris */
+  
 }
 
 .dashboard-section {
   position:relative;
-  right: 70vh;
+  right: 10vh;
   background: rgba(255, 255, 255, 0.517);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgb(255, 255, 255);
