@@ -87,8 +87,8 @@ export class FranceMapComponent implements AfterViewInit {
 
   private addRandomMarkers(latitude: number, longitude: number): void {
     for (let i = 0; i < 3; i++) {
-      const randomLat = latitude + (Math.random() - 0.7) * 0.2;  // Augmenter la variation pour plus d'espacement
-      const randomLng = longitude + (Math.random() - 0.7) * 0.2;
+      const randomLat = latitude + (Math.random() - 0.3) * 0.2;  // Augmenter la variation pour plus d'espacement
+      const randomLng = longitude + (Math.random() - 0.3) * 0.2;
 
       const customIcon = L.icon({
         iconUrl: 'assets/images/custom-marker.png', // Chemin vers votre image personnalisée

@@ -83,6 +83,8 @@ header {
     .info-text {
       font-size: 16px;
       color: #666;
+      margin-bottom: 150px;
+      margin-top: 19px;
     }
     
     .btn_wrapper {
