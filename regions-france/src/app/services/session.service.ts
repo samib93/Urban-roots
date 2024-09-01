@@ -25,3 +25,20 @@ export class SessionService {
   }
   
 }
+@Injectable({
+  providedIn: 'root'
+})
+export class ForumService {
+
+  private apiUrl = 'http://localhost:5000/api/posts';
+
+  constructor(private http: HttpClient) { }
+
+  getPosts(): Observable<any> {
+    return this.http.get(this.apiUrl);
+  }
+
+  createPost(content: string, token: string): Observable<any> {
+    return this.http.post(this.apiUrl, { content, token });
+  }
+}

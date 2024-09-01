@@ -1,2 +1,15 @@
 <app-header [activePage]="activePage"></app-header>
-<p>forum works!</p>
+
+<div>
+  <h2>Forum</h2>
+  
+  <!-- Formulaire pour créer un nouveau post -->
+  <textarea [(ngModel)]="newPostContent" placeholder="Écrivez votre message ici..."></textarea>
+  <button (click)="submitPost()">Envoyer</button>
+
+  <!-- Affichage des posts existants -->
+  <div *ngFor="let post of posts">
+    <p>{{ post.userId.displayName }}: {{ post.content }}</p>
+    <small>{{ post.createdAt | date:'short' }}</small>
+  </div>
+</div>
