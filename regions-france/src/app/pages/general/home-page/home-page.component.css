@@ -127,3 +127,23 @@ header {
       
     }
     
+    @media (max-width: 768px) {
+      .display-3 {
+          font-size: 15vw; /* Ajuster la taille pour petits écrans */
+      }
+      .main-heading h2 {
+        font-size: 15vw; /* Ajuste la taille pour les écrans plus petits */
+    }
+  }
+  
+  /* Pour les très petits écrans */
+  @media (max-width: 480px) {
+      .display-3 {
+          font-size: 20vw; /* Adapter pour les très petits écrans */
+      }
+      .main-heading h2 {
+        font-size: 15vw; /* Encore plus petit pour les téléphones */
+    }
+  }
+
+  
